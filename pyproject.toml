@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "english2kana"
+version = "0.1.0"
+description = "A lightweight tool to convert English and romanized Japanese words into Katakana."
+authors = ["m7142yosuke <m7142yosuke@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+numpy = "^1.24.0"
+tensorflow = "^2.18.0"
+mojimoji = "^0.0.13"
+
+[tool.poetry.group.train.dependencies]
+pandas = "^2.0.0"
+scikit-learn = "^1.5.2"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.8.3"
+black = "^24.10.0"
+mypy = "^1.13.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP", # pyupgrade
+]
+ignore = [
+    "E501",  # line too long, handled by black
+    "B008",  # do not perform function calls in argument defaults
+]
