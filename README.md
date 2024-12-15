@@ -29,7 +29,7 @@ e2k = english2kana()
 e2k.load_model()
 
 # Translate an English word into Katakana
-e2k.translate('simple')
+output = e2k.translate('simple')
 print(output)  # シンプル
 ```
 
