@@ -10,6 +10,7 @@ python = "^3.11"
 numpy = "^1.24.0"
 tensorflow = "^2.18.0"
 mojimoji = "^0.0.13"
+huggingface-hub = "^0.26.5"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.8.3"
