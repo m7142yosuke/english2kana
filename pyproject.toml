@@ -2,8 +2,12 @@
 name = "english2kana"
 version = "0.1.0"
 description = "A lightweight tool to convert English and romanized Japanese words into Katakana."
-authors = ["m7142yosuke <m7142yosuke@gmail.com>"]
+authors = ["yosuke KOBAYASHI <m7142yosuke@gmail.com>"]
 readme = "README.md"
+license = "MIT"
+packages = [
+  { include = "english2kana", from = "src" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.11"
