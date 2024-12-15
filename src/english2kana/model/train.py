@@ -10,11 +10,11 @@ from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLRO
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.preprocessing.text import Tokenizer
 
-from src.english2kana.data_processing.preprocess import pipeline
-from src.english2kana.model.build_model import build_model
-from src.english2kana.model.losses import masked_accuracy
+from english2kana.data_processing.preprocess import pipeline
+from english2kana.model.build_model import build_model
+from english2kana.model.losses import masked_accuracy
 
-CONFIG_PATH = "src/english2kana/configs/config.yaml"
+CONFIG_PATH = "english2kana/configs/config.yaml"
 HUGGINGFACE_DATASET_NAME = "m7142yosuke/english2kana-v1"
 
 START_TOKEN = "<s>"

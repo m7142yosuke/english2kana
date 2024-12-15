@@ -7,10 +7,11 @@ import yaml
 from huggingface_hub import hf_hub_download
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.preprocessing.text import tokenizer_from_json
+from english2kana.model.attention import DotAttention
 
-from src.english2kana.data_processing.preprocess import pipeline
+from english2kana.data_processing.preprocess import pipeline
 
-CONFIG_PATH = "src/english2kana/configs/config.yaml"
+CONFIG_PATH = "english2kana/configs/config.yaml"
 HUGGINGFACE_MODEL_REPO_ID = "m7142yosuke/english2kana"
 
 START_TOKEN = "<s>"
@@ -52,7 +53,7 @@ class English2KanaInferer:
         )
 
         # Load the model
-        self.model = tf.keras.models.load_model(model_path, compile=False)
+        self.model = tf.keras.models.load_model(model_path, compile=False, custom_objects={"DotAttention": DotAttention})
 
         # Load tokenizers
         with open(tokenizer_english_path, encoding="utf-8") as f:

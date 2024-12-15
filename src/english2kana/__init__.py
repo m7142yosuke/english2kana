@@ -1,4 +1,4 @@
-from src.english2kana.inference.infer import English2KanaInferer
+from english2kana.inference.infer import English2KanaInferer
 
 
 def english2kana():

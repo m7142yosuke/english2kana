@@ -1,7 +1,7 @@
 from tensorflow.keras.layers import LSTM, Concatenate, Dense, Embedding, Input
 from tensorflow.keras.models import Model
 
-from .attention import DotAttention
+from english2kana.model.attention import DotAttention
 
 
 def build_model(

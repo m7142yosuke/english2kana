@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "english2kana"
-version = "0.1.0"
+version = "0.1.1"
 description = "A lightweight tool to convert English and romanized Japanese words into Katakana."
 authors = ["yosuke KOBAYASHI <m7142yosuke@gmail.com>"]
 readme = "README.md"
