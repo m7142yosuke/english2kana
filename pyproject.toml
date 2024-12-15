@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "english2kana"
-version = "0.1.3"
+version = "0.1.4"
 description = "A lightweight tool to convert English and romanized Japanese words into Katakana."
 authors = ["yosuke KOBAYASHI <m7142yosuke@gmail.com>"]
 readme = "README.md"
@@ -11,6 +11,8 @@ packages = [
 include = [
   "src/english2kana/configs/config.yaml"
 ]
+[project.urls]
+repository = 'https://github.com/m7142yosuke/english2kana'
 
 [tool.poetry.dependencies]
 python = "^3.11"
