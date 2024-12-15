@@ -11,14 +11,15 @@ numpy = "^1.24.0"
 tensorflow = "^2.18.0"
 mojimoji = "^0.0.13"
 
-[tool.poetry.group.train.dependencies]
-pandas = "^2.0.0"
-scikit-learn = "^1.5.2"
-
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.8.3"
 black = "^24.10.0"
 mypy = "^1.13.0"
+pandas = "^2.2.3"
+scikit-learn = "^1.6.0"
+datasets = "^3.2.0"
+pandas-stubs = "^2.2.3.241126"
+types-pyyaml = "^6.0.12.20240917"
 
 
 [tool.poetry.group.test.dependencies]
@@ -48,5 +49,5 @@ strict = true
 exclude = ['tests/']
 
 [[tool.mypy.overrides]]
-module = ["tensorflow.*"]
+module = ["tensorflow.*", "datasets.*"]
 ignore_missing_imports = true

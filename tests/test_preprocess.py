@@ -1,10 +1,9 @@
 import pytest
 
 from src.english2kana.data_processing.preprocess import (
-    Preprocess,
-    camel_to_sep,
     check_halfwidth_english,
     convert_fullwidth_to_halfwidth,
+    pipeline,
     to_lower,
 )
 
@@ -24,37 +23,12 @@ class TestPreprocessFunctions:
         with pytest.raises(ValueError, match=r"non-halfwidth-English"):
             check_halfwidth_english(input_text)
 
-    @pytest.mark.parametrize(
-        "input_text, sep, expected",
-        [
-            ("ExampleWord", "_", "Example_Word"),
-            ("exampleWord", "_", "example_Word"),
-            ("example", "_", "example"),  # No split needed
-            (
-                "exampleWORLD",
-                "_",
-                "exampleWORLD",
-            ),  # Doesn't match camel/pascal pattern strictly
-        ],
-    )
-    def test_camel_to_sep(self, input_text, sep, expected):
-        assert camel_to_sep(input_text, sep) == expected
-
     def test_to_lower(self):
         assert to_lower("ABC") == "abc"
         assert to_lower("Example_Word") == "example_word"
 
-
-class TestPreprocessPipeline:
     def test_pipeline(self):
-        p = Preprocess(start_token="<start>", end_token="<end>", sep="_")
-        input_text = "ＥｘａｍｐｌｅＷｏｒｄ"  # Fullwidth chars
-        expected = "<start>example_word<end>"
-        result = p.pipeline(input_text)
+        input_text = "Ｅｘａｍｐｌｅ"  # Fullwidth chars
+        expected = "example"
+        result = pipeline(input_text)
         assert result == expected
-
-    def test_pipeline_invalid_input(self):
-        p = Preprocess(start_token="<start>", end_token="<end>", sep="_")
-        input_text = "Hello世界"
-        with pytest.raises(ValueError, match=r"non-halfwidth-English"):
-            p.pipeline(input_text)

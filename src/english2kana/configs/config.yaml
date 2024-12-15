@@ -1,0 +1,12 @@
+model:
+  num_chars_english: 27     # Number of unique characters for the input sequences (e.g., English letters)
+  num_chars_kana: 89        # Number of unique characters for the output sequences (e.g., Kana)
+  embedding_dim: 256        # Dimension of the embedding layer
+  latent_dim: 128           # Size of the hidden layers (e.g., LSTM units)
+  max_len_english: 29       # Maximum length of the input sequences (after padding)
+  max_len_kana: 36          # Maximum length of the output sequences (after padding)
+
+training:
+  batch_size: 64            # Batch size
+  epochs: 100               # Number of training epochs
+  learning_rate: 0.0005     # Learning rate
