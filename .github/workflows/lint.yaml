@@ -1,0 +1,49 @@
+name: Lint and Static Analysis
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  lint:
+    name: Linting and Static Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the repository
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Setup Python
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+
+    # Install Poetry
+    - name: Install Poetry
+      uses: snok/install-poetry@v1
+      with:
+        version: latest
+
+    # Install dependencies
+    - name: Install dependencies
+      run: |
+        poetry install --with dev
+
+    # Run Ruff for linting
+    - name: Run Ruff
+      run: |
+        poetry run ruff check .
+
+    # Run Black for code formatting
+    - name: Run Black
+      run: |
+        poetry run black --check .
+
+    # Run Mypy for type checking
+    - name: Run Mypy
+      run: |
+        poetry run mypy .
