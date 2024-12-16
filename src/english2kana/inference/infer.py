@@ -1,13 +1,14 @@
 import importlib.resources
 import json
 import tempfile
+from typing import Any
 
 import numpy as np
 import tensorflow as tf
 import yaml
 from huggingface_hub import hf_hub_download
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-from tensorflow.keras.preprocessing.text import tokenizer_from_json
+from tensorflow.keras.preprocessing.text import Tokenizer, tokenizer_from_json
 
 from english2kana.data_processing.preprocess import pipeline
 from english2kana.model.attention import DotAttention
@@ -20,7 +21,7 @@ END_TOKEN = "<e>"
 
 
 class English2KanaInferer:
-    def __init__(self):
+    def __init__(self) -> None:
         self.model = None
         self.tokenizer_english = None
         self.tokenizer_kana = None
@@ -29,7 +30,7 @@ class English2KanaInferer:
         self.max_len_english = self.config["model"]["max_len_english"]
         self.max_len_kana = self.config["model"]["max_len_kana"]
 
-    def _load_config(self):
+    def _load_config(self) -> Any:
         with importlib.resources.open_text("english2kana.configs", "config.yaml") as f:
             config = yaml.safe_load(f)
         return config
@@ -95,7 +96,9 @@ class English2KanaInferer:
         return self._decode_sequence(kana_seq, self.tokenizer_kana, END_TOKEN)
 
     @staticmethod
-    def _decode_sequence(sequence, tokenizer, end_token=END_TOKEN):
+    def _decode_sequence(
+        sequence: list[int], tokenizer: Tokenizer, end_token: str = END_TOKEN
+    ) -> str:
         decoded = []
         for idx in sequence:
             if idx != 0:

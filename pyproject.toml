@@ -60,5 +60,5 @@ strict = true
 exclude = ['tests/']
 
 [[tool.mypy.overrides]]
-module = ["tensorflow.*", "datasets.*"]
+module = ["tensorflow.*", "datasets.*", "huggingface_hub.*"]
 ignore_missing_imports = true
