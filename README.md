@@ -1,5 +1,7 @@
 # english2kana
 
+[![test](https://github.com/m7142yosuke/english2kana/actions/workflows/build-test.yaml/badge.svg)](https://github.com/m7142yosuke/english2kana/actions/workflows/build-test.yaml)
+
 english2kana is a Python library designed to convert English words and romanized Japanese text into their Katakana representations. It leverages a sequence-to-sequence model with an attention mechanism, trained on data derived from English company names and their corresponding Katakana forms found on the Japan Corporate Number Publication Site.
 
 Key Features:
